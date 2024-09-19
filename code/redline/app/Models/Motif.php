@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Absence extends Model
+class Motif extends Model
 {
     use HasFactory;
 
-    public function Test(){
-        // return $this->belongsTo(User::class);
+    protected function casts(): array{
+        return[
+            'is_accessible_worker' => 'boolean',
+        ];
     }
 }
