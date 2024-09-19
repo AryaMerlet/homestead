@@ -17,11 +17,11 @@ class MotifFactory extends Factory
     public function definition(): array
     {
         return [
-            'description'=>fake()->text(30),
+            'description' => fake()->text(30),
             'firstname' => fake()->firstName(),
             'lastname' => fake()->LastName(),
             'job' => fake()->jobTitle(),
-            'is_accessible_worker' => fake()->boolean()
+            'is_accessible_worker' => fake()->boolean(),
         ];
     }
 }

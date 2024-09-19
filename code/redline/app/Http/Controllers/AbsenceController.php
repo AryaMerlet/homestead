@@ -12,7 +12,6 @@ class AbsenceController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -20,7 +19,6 @@ class AbsenceController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -28,7 +26,6 @@ class AbsenceController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
@@ -41,9 +38,9 @@ class AbsenceController extends Controller
         dd($liste);
     }
 
-    public function getAbsence(Request $request, $absence){
-        $param = $absence;
-        return $param;
+    public function getAbsence(Request $request, $absence)
+    {
+        return $absence;
     }
 
     /**
@@ -51,7 +48,6 @@ class AbsenceController extends Controller
      */
     public function edit(Absence $absence)
     {
-        //
     }
 
     /**
@@ -59,7 +55,6 @@ class AbsenceController extends Controller
      */
     public function update(Request $request, Absence $absence)
     {
-        //
     }
 
     /**
@@ -67,6 +62,5 @@ class AbsenceController extends Controller
      */
     public function destroy(Absence $absence)
     {
-        //
     }
 }

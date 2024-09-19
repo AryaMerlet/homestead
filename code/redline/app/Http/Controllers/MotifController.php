@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Absence;
 use App\Models\Motif;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\session;
-use App\Models\Absence;
 
 class MotifController extends Controller
 {
@@ -15,6 +15,7 @@ class MotifController extends Controller
     public function index()
     {
         $motifs = Motif::all();
+
         return view('motif.index', compact('motifs'));
     }
 
@@ -24,7 +25,6 @@ class MotifController extends Controller
     public function create()
     {
         return view('motif.create');
-
     }
 
     /**
@@ -34,6 +34,7 @@ class MotifController extends Controller
     {
         dd($request);
         new motif($request->description);
+
         return $this->index();
     }
 
@@ -42,7 +43,6 @@ class MotifController extends Controller
      */
     public function show(Motif $motif)
     {
-        //
     }
 
     /**
@@ -50,7 +50,7 @@ class MotifController extends Controller
      */
     public function edit(Motif $motif)
     {
-        return view('motif.edit',compact('motif'));
+        return view('motif.edit', compact('motif'));
     }
 
     /**
@@ -60,6 +60,7 @@ class MotifController extends Controller
     {
         $motif->description = $request->description;
         $motif->save();
+
         return $this->index();
     }
 
@@ -69,18 +70,24 @@ class MotifController extends Controller
     public function destroy(Motif $motif)
     {
         $nb = Absence::where('motif_id', $motif->id)->count();
-        if($nb === 0){
+        if ($nb === 0) {
             $motif->delete();
-        }else{
-            session::put('message',"Le motif est encore utilisé par {$nb} absence(s)");
+        } else {
+            session::put('message', "Le motif est encore utilisé par {$nb} absence(s)");
         }
 
         return $this->index();
     }
-
+    /**
+     * @return mixed
+     * Summary of restore
+     * @param \App\Models\Motif $motif
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function restore(Motif $motif)
     {
         $motif->restore();
+
         return $this->index();
     }
 }

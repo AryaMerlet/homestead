@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('motifs', function (Blueprint $table) {
-            $table->after('description', function (Blueprint $table){
+            $table->after('description', function (Blueprint $table) {
                 $table->boolean('is_accessible_worker')->default(true);
-                $table->string('job',40)->nullable();
+                $table->string('job', 40)->nullable();
             });
         });
     }

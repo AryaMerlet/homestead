@@ -1,9 +1,9 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\User;
 
 return new class extends Migration
 {
@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('startleave');
             $table->string('duration');
-            $table->foreignIdFor(User::class,'id_user');
+            $table->foreignIdFor(User::class, 'id_user');
             $table->timestamps();
         });
     }

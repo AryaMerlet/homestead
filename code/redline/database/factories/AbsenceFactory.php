@@ -19,7 +19,7 @@ class AbsenceFactory extends Factory
         return [
             'startleave' => fake()->dateTimeThisYear(),
             'duration' => fake()->time(),
-            'id_user' => fake()->randomDigitNot(0)
+            'id_user' => fake()->randomDigitNot(0),
         ];
     }
 }
