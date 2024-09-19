@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Motif;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\session;
+use App\Models\Absence;
 
 class MotifController extends Controller
 {
@@ -30,8 +32,8 @@ class MotifController extends Controller
      */
     public function store(Request $request)
     {
-        $motif = $request->description;
-        motif::create(["description" => $request->description]);
+        dd($request);
+        new motif($request->description);
         return $this->index();
     }
 
@@ -66,6 +68,19 @@ class MotifController extends Controller
      */
     public function destroy(Motif $motif)
     {
-        //
+        $nb = Absence::where('motif_id', $motif->id)->count();
+        if($nb === 0){
+            $motif->delete();
+        }else{
+            session::put('message',"Le motif est encore utilisé par {$nb} absence(s)");
+        }
+
+        return $this->index();
+    }
+
+    public function restore(Motif $motif)
+    {
+        $motif->restore();
+        return $this->index();
     }
 }
